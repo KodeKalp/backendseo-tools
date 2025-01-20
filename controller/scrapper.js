@@ -3,6 +3,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const fs = require('fs');
 const { parsePhoneNumberFromString } = require('libphonenumber-js');
+const { execSync } = require('child_process');
 
 
 const workingUrl = async (urls) => {
@@ -164,10 +165,12 @@ exports.bulkScrapeAll = async (urls) => {
         });
 
         console.log(`Formatted URLs: ${formattedUrls}`);
+        console.log(execSync('ls -la /home/sbx_user1051/.cache/puppeteer').toString());
+
 
         // Launch Puppeteer once
         // const browser = await puppeteer.launch({ headless: true }); // Headless mode for better performance
-        const browser = await puppeteer.launch({
+        browser = await puppeteer.launch({
             args: [
               '--no-sandbox',
               '--disable-setuid-sandbox',
@@ -175,6 +178,7 @@ exports.bulkScrapeAll = async (urls) => {
               '--single-process',
               '--no-zygote'
             ],
+            executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome', // Ensure the correct path
             headless: 'new'
           });
         const BulkScrapperResult = [];
