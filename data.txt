@@ -12,7 +12,7 @@
 .calendly-inline-widget *,
 .calendly-badge-widget,
 .calendly-badge-widget *,
-.calendly-overlay,
+.calendly-overlay, 
 .calendly-overlay * {
     font-size:16px;
     line-height:1.2em
