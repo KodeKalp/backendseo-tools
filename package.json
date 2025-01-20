@@ -1,0 +1,30 @@
+{
+    "name": "mern-backend",
+    "version": "1.0.0",
+    "description": "KodeKalp Global Technologies Private Limited",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js"
+    },
+    "author": "KodeVedic",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^1.7.9",
+        "bcrypt": "^5.1.0",
+        "body-parser": "^1.20.3",
+        "cheerio": "^1.0.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.1",
+        "express": "^4.21.2",
+        "express-validator": "^7.2.1",
+        "jsonwebtoken": "^9.0.0",
+        "libphonenumber-js": "^1.11.18",
+        "mongoose": "^7.8.4",
+        "nodemailer": "^6.9.4",
+        "puppeteer": "^24.1.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.1"
+    }
+}
