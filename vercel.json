@@ -17,12 +17,7 @@
       "dest": "/"
     }
   ],
-  "functions": {
-    "index.js": {
-      "runtime": "nodejs18.x",
-      "maxDuration": 10
-    }
-  },
+
   "build": {
     "env": {
       "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "false",
