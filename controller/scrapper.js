@@ -166,7 +166,17 @@ exports.bulkScrapeAll = async (urls) => {
         console.log(`Formatted URLs: ${formattedUrls}`);
 
         // Launch Puppeteer once
-        const browser = await puppeteer.launch({ headless: true }); // Headless mode for better performance
+        // const browser = await puppeteer.launch({ headless: true }); // Headless mode for better performance
+        const browser = await puppeteer.launch({
+            args: [
+              '--no-sandbox',
+              '--disable-setuid-sandbox',
+              '--disable-dev-shm-usage',
+              '--single-process',
+              '--no-zygote'
+            ],
+            headless: 'new'
+          });
         const BulkScrapperResult = [];
         console.log('Puppeteer browser launched.');
 
