@@ -4,6 +4,8 @@ const cheerio = require('cheerio');
 const fs = require('fs');
 const { parsePhoneNumberFromString } = require('libphonenumber-js');
 const { execSync } = require('child_process');
+const chromium = require('chrome-aws-lambda');
+
 
 
 const workingUrl = async (urls) => {
@@ -165,7 +167,7 @@ exports.bulkScrapeAll = async (urls) => {
         });
 
         console.log(`Formatted URLs: ${formattedUrls}`);
-        console.log(execSync('ls -la /home/sbx_user1051/.cache/puppeteer').toString());
+        console.log(execSync('ls -la /tmp').toString());
 
 
         // Launch Puppeteer once
@@ -178,7 +180,7 @@ exports.bulkScrapeAll = async (urls) => {
               '--single-process',
               '--no-zygote'
             ],
-            executablePath: process.env.CHROME_PATH || '/usr/bin/google-chrome', // Ensure the correct path
+            executablePath: process.env.CHROME_PATH || '/tmp/chromium', // Ensure the correct path
             headless: 'new'
           });
         const BulkScrapperResult = [];
