@@ -3,8 +3,8 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const fs = require('fs');
 const { parsePhoneNumberFromString } = require('libphonenumber-js');
-// const chromium = require("@sparticuz/chromium");
-
+const chromium = require('@sparticuz/chromium-min');
+const puppeteerCore = require('puppeteer-core');
 
 
 const workingUrl = async (urls) => {
