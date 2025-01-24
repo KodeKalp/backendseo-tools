@@ -162,18 +162,8 @@ exports.bulkScrapeAll = async (urls) => {
 
         console.log(`Formatted URLs: ${formattedUrls}`);
 
-        const executablePath = await chromium.executablePath('https://github.com/Sparticuz/chromium/releases/download/v131.0.1/chromium-v131.0.1-pack.tar')
-
-
         // Launch Puppeteer once
-        const browser = await puppeteerCore.launch({
-            executablePath,
-            // You can pass other configs as required
-            args: chromium.args,
-            headless: chromium.headless,
-            defaultViewport: chromium.defaultViewport
-        })
-
+        const browser = await puppeteer.launch({ headless: true }); // Headless mode for better performance
         const BulkScrapperResult = [];
         console.log('Puppeteer browser launched.');
 
