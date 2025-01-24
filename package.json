@@ -24,7 +24,9 @@
         "libphonenumber-js": "^1.11.18",
         "mongoose": "^7.8.4",
         "nodemailer": "^6.9.4",
-        "puppeteer": "^24.1.0"
+        "puppeteer": "^23.10.4",
+        "puppeteer-core": "^23.10.4",
+        "@sparticuz/chromium-min": "^131.0.1"
     },
     "devDependencies": {
         "nodemon": "^3.0.1"
