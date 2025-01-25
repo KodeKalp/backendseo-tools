@@ -3,8 +3,8 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const fs = require('fs');
 const { parsePhoneNumberFromString } = require('libphonenumber-js');
-const chromium = require('@sparticuz/chromium-min');
-const puppeteerCore = require('puppeteer-core');
+// const chromium = require("@sparticuz/chromium");
+
 
 
 const workingUrl = async (urls) => {
@@ -162,33 +162,18 @@ exports.bulkScrapeAll = async (urls) => {
 
         console.log(`Formatted URLs: ${formattedUrls}`);
 
-        const executablePath = await chromium.executablePath('https://github.com/Sparticuz/chromium/releases/download/v131.0.1/chromium-v131.0.1-pack.tar')
-
-
         // Launch Puppeteer once
-        const browser = await puppeteerCore.launch({
-            executablePath,
-            // You can pass other configs as required
-            args: chromium.args,
-            headless: chromium.headless,
-            defaultViewport: chromium.defaultViewport
-        })
-
         const BulkScrapperResult = [];
-        console.log('Puppeteer browser launched.');
 
         // Scrape each URL sequentially
         for (let url of formattedUrls) {
             console.log(`Scraping URL: ${url}`);
 
-            const page = await browser.newPage(); // Open a new page within the same browser
-            console.log(`New page created for URL: ${url}`);
 
             try {
-                await page.goto(url, { waitUntil: 'domcontentloaded' }); // Wait for DOM to load
                 console.log(`Page loaded for: ${url}`);
 
-                const data = await page.content(); // Get HTML after JavaScript is executed
+                const { data } = await axios.get(url);
                 console.log(`HTML content fetched for: ${url}`);
 
                 // Load HTML content into cheerio
