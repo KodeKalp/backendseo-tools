@@ -605,7 +605,7 @@ exports.myBulkScrapeAll = async (urls) => {
             // Determine if scraping was successful (i.e. at least one email found)
             const uniqueEmails = [...new Set(pageEmails)];
             const scrapingSuccess = uniqueEmails.length > 0;
-
+ 
             // Update the database accordingly
             try {
                 if (scrapingSuccess) {
